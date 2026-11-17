@@ -1,0 +1,565 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f6fc;
+    color: #263445;
+}
+
+/* HEADER */
+.main-header {
+    background: #1769aa;
+    color: white;
+    width: 100%;
+    padding: 25px 60px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hub-title {
+    width: 100%;
+    text-align: center;
+}
+
+.hub-title h1 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hub-title p {
+    margin: 8px 0 0;
+    font-size: 15px;
+}
+
+/* HAMBURGER */
+.menu-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -270px;
+    width: 250px;
+    height: 100%;
+    background: white;
+    z-index: 1000;
+    padding: 25px 15px;
+    box-shadow: 3px 0 12px #0002;
+    transition: left 0.3s ease;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar h2 {
+    color: #1769aa;
+    margin-bottom: 30px;
+}
+
+.sidebar button:not(.close-menu) {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 10px;
+    background: #edf5fc;
+    border: none;
+    border-radius: 8px;
+    text-align: left;
+    color: #1769aa;
+    font-size: 15px;
+    cursor: pointer;
+} .close-menu {
+    float: right;
+    font-size: 23px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #1769aa;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: #0006;
+    z-index: 999;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* MAIN CONTENT */
+.container {
+    max-width: 1050px;
+    margin: 25px auto;
+    padding: 15px;
+}
+
+.section {
+    background: white;
+    padding: 23px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #173b5c12;
+}
+
+.section h2 {
+    color: #1769aa;
+    margin-top: 0;
+}
+
+.section h3 {
+    color: #315b80;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* DASHBOARD */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.stat-card {
+    background: #edf5fc;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border-bottom: 4px solid #398bd0;
+}
+
+.stat-card .icon {
+    font-size: 27px;
+}
+
+.stat-card h3 {
+    color: #1769aa;
+    font-size: 24px;
+    margin: 10px 0 5px;
+}
+/* INPUTS */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 7px 0 12px;
+    border: 1px solid #ccd8e5;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1769aa;
+}
+
+/* BUTTONS */
+.action,
+.action-green,
+.action-red {
+    color: white;
+    border: none;
+    padding: 11px 17px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.action {
+    background: #1769aa;
+}
+
+.action:hover {
+    background: #105185;
+}
+
+.action-green {
+    background: #219b67;
+}
+
+.action-green:hover {
+    background: #16794e;
+}
+
+.action-red {
+    background: #dc4848;
+}
+
+.action-red:hover {
+    background: #b72d2d;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+} /* BUTTONS */
+.action,
+.action-green,
+.action-red {
+    color: white;
+    border: none;
+    padding: 11px 17px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.action {
+    background: #1769aa;
+}
+
+.action:hover {
+    background: #105185;
+}
+
+.action-green {
+    background: #219b67;
+}
+
+.action-green:hover {
+    background: #16794e;
+}
+
+.action-red {
+    background: #dc4848;
+}
+
+.action-red:hover {
+    background: #b72d2d;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* CAMERA CONTROLS */
+.camera-controls {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    margin: 15px 0;
+}
+
+.camera-controls button {
+    flex: 1;
+    min-width: 0;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* BARCODE READER */
+#reader {
+    width: 100%;
+    max-width: 450px;
+    margin: 15px auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#scanResult {
+    background: #eaf5ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    display: none;
+    border-left: 4px solid #1769aa;
+    overflow-wrap: anywhere;
+}
+
+/* PROJECTS, TASKS, ANNOUNCEMENTS */
+.project,
+.note,
+.task,
+.result-card {
+    background: #f1f7fd;
+    padding: 15px;
+    margin: 12px 0;
+    border-left: 4px solid #398bd0;
+    border-radius: 7px;
+}
+
+.project strong,
+.task strong {
+    color: #1769aa;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+} .task label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.task input {
+    width: auto;
+    margin: 0;
+}
+
+.task.done strong {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.delete-btn {
+    background: #dc4848;
+    color: white;
+    border: none;
+    padding: 7px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.status {
+    font-weight: bold;
+    color: #1769aa;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #788797;
+    font-size: 13px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .main-header {
+        padding: 22px 50px;
+    }
+
+    .hub-title h1 {
+        font-size: 23px;
+    }
+
+    .hub-title p {
+        font-size: 12px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .section {
+        padding: 17px;
+    }
+
+    .camera-controls {
+        gap: 8px;
+    }
+
+    .camera-controls button {
+        font-size: 13px;
+        padding: 10px 5px;
+    }
+} /* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(23,105,170,.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(23,105,170,0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(23,105,170,0);
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(255,255,255,.4);
+    }
+
+    to {
+        text-shadow:
+            0 0 10px rgba(255,255,255,.8),
+            0 0 20px rgba(255,255,255,.5);
+    }
+}
+
+/* PAGE */
+body {
+    animation: fadeIn .8s ease;
+}
+
+/* HEADER */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+}
+
+.hub-title h1 {
+    animation: glow 3s infinite alternate;
+}
+
+/* MENU */
+.menu-btn,
+.close-menu {
+    transition: .3s;
+}
+
+.menu-btn:hover {
+    transform: translateY(-50%) scale(1.15);
+}
+
+.close-menu:hover {
+    transform: rotate(90deg);
+}
+
+/* SIDEBAR */
+.sidebar button:not(.close-menu) {
+    transition: .3s;
+}
+
+.sidebar button:not(.close-menu):hover {
+    background: #dcecff;
+    transform: translateX(8px);
+}
+
+/* SECTIONS */
+.section {
+    animation: slideUp .6s ease;
+}
+
+/* CARDS */
+.stat-card {
+    transition: .3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 20px rgba(0,0,0,.12);
+}
+
+/* PROJECTS */
+.project,
+.note,
+.task,
+.result-card {
+    transition: .3s;
+    animation: popIn .3s ease;
+}
+
+.project:hover,
+.note:hover,
+.task:hover,
+.result-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 18px rgba(0,0,0,.12);
+}
+
+/* BUTTONS */
+.action,
+.action-green,
+.action-red,
+.delete-btn {
+    transition: .25s;
+}
+
+.action:hover,
+.action-green:hover,
+.action-red:hover,
+.delete-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 12px rgba(0,0,0,.15);
+}
+
+.action:active,
+.action-green:active,
+.action-red:active,
+.delete-btn:active {
+    transform: scale(.95);
+}
+
+/* INPUTS */
+input {
+    transition: .3s;
+}
+
+input:focus {
+    box-shadow: 0 0 10px rgba(23,105,170,.2);
+}
+
+/* BARCODE SCANNER */
+#reader {
+    animation: pulse 2s infinite;
+} 
+.stat-card h3 {
+    transition: .3s;
+}
+
+.stat-card:hover h3 {
+    transform: scale(1.15);
+}

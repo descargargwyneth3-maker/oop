@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Barcode Scanner Library -->
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+        <div class="hub-title">
+            <h1>STUDENT HUB</h1>
+            <p>Your Attendance and Academic Management System</p>
+        </div>
+    </header>
+
+    <!-- SIDEBAR OVERLAY -->
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <!-- HAMBURGER MENU -->
+    <aside class="sidebar" id="sidebar">
+        <button class="close-menu" onclick="toggleMenu()">✕</button>
+
+        <h2>☰ Menu</h2>
+
+        <button class="active" onclick="showSection('dashboard', this)">🏠 Dashboard</button>
+        <button onclick="showSection('attendance', this)">📋 Attendance</button>
+        <button onclick="showSection('projects', this)">📁 Projects</button>
+        <button onclick="showSection('announcements', this)">📢 Announcements</button>
+        <button onclick="showSection('tasks', this)">☑️ Tasks</button>
+    </aside>
+
+    <main class="container">
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="section">
+            <h2>Welcome, Students! 👋</h2>
+            <p>Here is your academic overview.</p>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="icon">📋</span>
+                    <h3 id="attendanceStatus">0</h3>
+                    <p>Attendance Records</p>
+                </div>
+
+                <div class="stat-card">
+                    <span class="icon">📁</span>
+                    <h3 id="projectCount">0</h3>
+                    <p>Total Projects</p>
+                </div>
+
+                <div class="stat-card">
+                    <span class="icon">☑️</span>
+                    <h3 id="taskCount">0</h3>
+                    <p>Pending Tasks</p>
+                </div>
+
+                <div class="stat-card">
+                    <span class="icon">📢</span>
+                    <h3 id="noteCount">0</h3>
+                    <p>Announcements</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ATTENDANCE -->
+        <section id="attendance" class="section hidden">
+            <h2>📋 Student Attendance</h2>
+            <p>Scan your 1D Student ID Barcode or search manually.</p>
+
+            <input type="text" id="studentSearch"
+                placeholder="Enter Student Name or ID">
+
+            <button class="action" onclick="studentHub.searchStudent()">
+                🔍 Search Record
+            </button>
+
+            <h3>Barcode Scanner</h3>
+            <p>Place your student ID barcode in front of your camera.</p>
+
+            <div class="camera-controls">
+                <button class="action-green" id="startScanBtn"
+                    onclick="studentHub.startScanner()">
+                    ▶ Play Button 
+                </button>
+
+                <button class="action-red" id="stopScanBtn"
+                    onclick="studentHub.stopScanner()" disabled>
+                    ■ 
+                </button>
+            </div>
+
+            <div id="reader" class="hidden"></div>
+            <div id="scanResult"></div>
+            <div id="attendanceResult"></div>
+
+            <h3>Attendance History</h3>
+            <div id="attendanceHistory"></div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="section hidden">
+            <h2>📁 Project Deadline Tracker</h2>
+
+            <div id="projectList"></div>
+
+            <h3>Add New Project</h3>
+
+            <input type="text" id="projectName" placeholder="Project Name">
+            <input type="text" id="subjectName" placeholder="Subject Name">
+            <input type="date" id="deadline">
+
+            <button class="action" onclick="studentHub.addProject()">
+                + Add Project
+            </button>
+        </section>
+
+        <!-- ANNOUNCEMENTS -->
+        <section id="announcements" class="section hidden">
+            <h2>📢 Important Notes and Announcements</h2>
+
+            <div id="announcementList"></div>
+
+            <h3>Add New Announcement</h3>
+
+            <input type="text" id="newAnnouncement"
+                placeholder="Write an important announcement">
+
+            <button class="action" onclick="studentHub.addAnnouncement()">
+                + Add Announcement
+            </button>
+        </section>
+
+        <!-- TASKS -->
+        <section id="tasks" class="section hidden">
+            <h2>☑️ My Task Checklist</h2>
+
+            <div id="taskList"></div>
+
+            <h3>Add New Task</h3>
+
+            <input type="text" id="newTask" placeholder="Enter your task">
+
+            <button class="action" onclick="studentHub.addTask()">
+                + Add Task
+            </button>
+        </section>
+
+    </main>
+
+    <footer>
+        Student Hub © 2026 | Student Academic Management System
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html> 
+
